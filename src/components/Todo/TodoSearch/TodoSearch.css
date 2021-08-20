@@ -1,0 +1,16 @@
+.welcome__input {
+  font-size: 20px;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 10px;
+  width: 521px;
+  height: 70px;
+  border: none;
+  color: var(--todo-blue-smoke-color);
+  background-color: var(--todo-blue-color-black);
+  box-shadow: 4px 3px 68px rgba(0, 0, 0, 0.25);
+}
+
+.welcome__input::placeholder {
+    color: var(--todo-blue-smoke-color);
+}
