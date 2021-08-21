@@ -37,3 +37,8 @@ p {
 h2 {
   font-size: 50px;
 }
+
+
+input:focus-visible {
+  outline: none;
+}
