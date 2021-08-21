@@ -14,7 +14,7 @@ const Hero = () => {
         a fin, y descrubre que tran facil es organizarte
       </p>
       <Link to="/todo">
-        <button className="hero__btn">Empezar</button>
+      <button className="hero__btn">Empezar</button>
       </Link>
     </section>
   );

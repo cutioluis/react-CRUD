@@ -1,0 +1,11 @@
+.add__btn {
+  border: none;
+  border-radius: 50%;
+  color: var(--todo-white-color);
+  background-color: var(--todo-pink-color);
+  font-size: 25px;
+  margin: 20px 0;
+  height: 50px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  width: 50px;
+}
