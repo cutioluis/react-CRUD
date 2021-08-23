@@ -36,6 +36,7 @@ const Todo = () => {
         <TodoWelcome />
         <TodoCounter />
         <TodoSearch />
+        <TodoAdd />
         <TodoList>
           {todos.map((todo) => (
             <TodoItem
@@ -45,7 +46,6 @@ const Todo = () => {
             />
           ))}
         </TodoList>
-        <TodoAdd />
       </section>
     </>
   );
