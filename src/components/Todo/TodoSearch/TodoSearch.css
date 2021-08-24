@@ -14,3 +14,6 @@
 .welcome__input::placeholder {
     color: var(--todo-blue-smoke-color);
 }
+p {
+  color: white;
+}

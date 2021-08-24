@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import "./TodoSearch.css";
 
-const TodoSearch = () => {
+const TodoSearch = ({ search, setSearch }) => {
 
-    const onSearchValueChanged = (e) => {
-        console.log(e.target.value);
-        setSearch(e.target.value)
-    }
-
-  const [search, setSearch] = useState('');
   return (
     <section>
       <input
         className="welcome__input"
         type="text"
         value={search}
-        onChange={onSearchValueChanged}
+        onChange={e => setSearch(e.target.value)}
         placeholder="Buscar tareas"
       />
       <p>{search}</p>
