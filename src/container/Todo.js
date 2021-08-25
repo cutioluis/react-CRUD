@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import TodoSearch from "../components/Todo/TodoSearch/TodoSearch";
-import TodoWelcome from "../components/Todo/TodoWelcome/TodoWelcome";
-import TodoCounter from "../components/Todo/TodoCounter/TodoCounter";
-import TodoAdd from "../components/Todo/TodoAdd/TodoAdd";
 
-import TodoList from "../components/Todo/TodoList/TodoList";
-import TodoItem from "../components/Todo/TodoList/TodoItem/TodoItem";
-
+import TodoUI from "./TodoUI";
+/* 
 const defaultTodos = [
   {
     id: 0,
@@ -23,15 +18,38 @@ const defaultTodos = [
     text: "Hacer un ecomerce con el stack MEARN para mejorar",
     completed: false,
   },
-  {
-    id: 3,
-    text: "Terminar toda nuestra aplicacion CRUD",
-    completed: false,
-  },
-];
+]; */
+
+function useLocalStorage(itemName, initialValue) {
+  /* Nombre de nuestro localStorageItem */
+  const localStorageItem = localStorage.getItem(itemName);
+  /* Array por defecto para user NEWs */
+  let parsedItem;
+
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item, setItem] = useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    const stringTodos = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringTodos);
+    setItem(newItem);
+  };
+
+  return [
+    item,
+    saveItem
+  ];
+}
 
 const Todo = () => {
-  const [todos, setTodos] = useState(defaultTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+
   const [search, setSearch] = useState("");
 
   const completedTodos = todos.filter((todos) => !!todos.completed).length;
@@ -46,7 +64,7 @@ const Todo = () => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = true;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   const deleteTodo = (text) => {
@@ -54,33 +72,19 @@ const Todo = () => {
     const newTodos = [...todos];
     /* Metodo Splice */
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   return (
-    <>
-      <section
-        style={{
-          textAlign: "center",
-        }}
-      >
-        <TodoWelcome />
-        <TodoCounter total={totalTodos} completed={completedTodos} />
-        <TodoSearch search={search} setSearch={setSearch} />
-        <TodoAdd />
-        <TodoList>
-          {filterTodos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />
-          ))}
-        </TodoList>
-      </section>
-    </>
+    <TodoUI
+      totalTodos={totalTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+      completedTodos={completedTodos}
+      search={search}
+      setSearch={setSearch}
+      filterTodos={filterTodos}
+    />
   );
 };
 

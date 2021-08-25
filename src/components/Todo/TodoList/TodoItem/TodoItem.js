@@ -17,6 +17,7 @@ const TodoItem = ({ text, completed, onComplete, onDelete }) => {
         <RiDeleteBin7Fill
           onClick={onDelete}
           style={{
+            cursor: "pointer",
             margin: '0 10px',
             textAlign: "end",
             color: "white",
