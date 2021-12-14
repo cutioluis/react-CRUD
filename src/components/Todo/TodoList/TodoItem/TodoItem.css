@@ -5,7 +5,7 @@
 }
 
 .items_input {
-  padding:  20px;
+  padding: 20px;
   display: flex;
   align-items: center;
   margin: 45px 0;
@@ -25,8 +25,15 @@
 }
 
 .items__checkbox {
-    margin-right: 20px;
-    height:20px;
-    width: 20px;
+  margin-right: 20px;
+  height: 20px;
+  width: 20px;
 }
 
+.icon-delete {
+  cursor: pointer;
+  font-size: 25px;
+  margin: 0 10px;
+  text-align: end;
+  color: white;
+}

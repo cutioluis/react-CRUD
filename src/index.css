@@ -40,5 +40,5 @@ h2 {
 
 
 input:focus-visible {
-  outline: none;
+  outline: 1px solid rgba(128, 130, 235, 0.219);
 }

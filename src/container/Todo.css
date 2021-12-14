@@ -1,0 +1,9 @@
+.container-todo {
+  text-align: center;
+}
+
+.container-search {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

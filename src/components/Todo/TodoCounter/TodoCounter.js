@@ -1,10 +1,10 @@
 import React from "react";
 
-const TodoCounter = ({total, completed}) => {
+const TodoCounter = () => {
   return (
     <div>
       <p className="welcome_text">
-        Haz <b>completado {completed}</b> de {total} tareas
+        Haz completado <b> 6 tareas de 10</b>
       </p>
     </div>
   );
