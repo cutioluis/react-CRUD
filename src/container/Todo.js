@@ -1,31 +1,79 @@
-import React from "react";
-import TodoWelcome from "../components/Todo/TodoWelcome/TodoWelcome";
-import TodoCounter from "../components/Todo/TodoCounter/TodoCounter";
-
-import TodoSearch from "../components/Todo/TodoSearch/TodoSearch";
-import TodoAdd from "../components/Todo/TodoAdd/TodoAdd";
-import TodoList from "../components/Todo/TodoList/TodoList";
-import TodoItem from "../components/Todo/TodoList/TodoItem/TodoItem";
+import React, { useState } from "react";
+import AppUI from "../App/AppUI";
 
 /* Css */
 import "./Todo.css";
 
-const Todo = () => {
-  return (
-    <>
-      <section className="container-todo">
-        <TodoWelcome />
-        <TodoCounter />
-        <section className="container-search">
-          <TodoSearch />
-          <TodoAdd />
-        </section>
+// make arrats with tasks
+const defaultTodos = [
+  {
+    title: "Learn React",
+    isDone: false,
+  },
+  {
+    title: "Learn Redux",
+    isDone: false,
+  },
+  {
+    title: "Learn React Router",
+    isDone: false,
+  },
+  {
+    title: "Learn React Hooks",
+    isDone: false,
+  },
+];
 
-        <TodoList>
-          <TodoItem />
-        </TodoList>
-      </section>
-    </>
+//create arrays with tasks
+
+const Todo = () => {
+  /* Local Storage using Local Storage */
+  const localStorageTodos = localStorage.getItem("TODOS_V1");
+  let parsedTodos
+
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS_V1')
+  }
+
+
+  const [todos, setTodos] = useState(defaultTodos);
+  const [search, setSearch] = useState("");
+
+  const completedTodos = todos.filter((tod) => !!tod.isDone).length;
+  const allTodos = todos.length;
+
+
+  /* Toods Filter */
+  const filterTodos = todos.filter((tod) => {
+    return tod.title.toLowerCase().includes(search.toLowerCase());
+  });
+
+  /* Todo Complete */
+  const completeTodo = (title) => {
+    const todoIndex = todos.findIndex((tod) => tod.title === title);
+    const newTodos = [...todos];
+    newTodos[todoIndex].isDone = true;
+    setTodos(newTodos);
+  };
+
+  const deleteTodo = (title) => {
+    const todoIndex = todos.findIndex((tod) => tod.title === title);
+    const newTodos = [...todos];
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  };
+
+  return (
+    <AppUI
+      todos={todos}
+      allTodos={allTodos}
+      completedTodos={completedTodos}
+      search={search}
+      setSearch={setSearch}
+      filterTodos={filterTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
   );
 };
 

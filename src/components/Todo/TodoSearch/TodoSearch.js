@@ -1,19 +1,21 @@
 import React from "react";
 import "./TodoSearch.css";
 
-const TodoSearch = () => {
+const TodoSearch = ({ search, setSearch }) => {
   const handleChange = (e) => {
-    console.log(e.target.value);
+    setSearch(e.target.value);
   };
 
   return (
     <section>
       <input
-        onChange={handleChange}
         className="welcome__input"
+        value={search}
+        onChange={handleChange}
         type="text"
         placeholder="Buscar tareas"
       />
+      <p></p>
     </section>
   );
 };

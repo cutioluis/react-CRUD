@@ -1,0 +1,44 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --todo-blue-color: #031956;
+  --todo-blue-color-black: #02123E;
+  --todo-blue-smoke-color: #8598CC;
+  --todo-white-color: #FFFFFF;
+  --todo-white-smoke: #C4C4C4;
+  --todo-pink-color: #F569BD;
+}
+
+body {
+  background-color: var(--todo-blue-color);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+p {
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+
+input:focus-visible {
+  outline: 1px solid rgba(128, 130, 235, 0.219);
+}

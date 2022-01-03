@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "../container/Home";
 import Todo from "../container/Todo";
-
 import Layout from "../layout/Layout";
 
 const App = () => {

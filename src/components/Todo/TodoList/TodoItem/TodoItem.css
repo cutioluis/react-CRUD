@@ -1,7 +1,6 @@
 .items {
   width: 500px;
   margin: 0 auto;
-  text-align: start;
 }
 
 .items_input {
@@ -34,6 +33,6 @@
   cursor: pointer;
   font-size: 25px;
   margin: 0 10px;
-  text-align: end;
+  display: inline-flex;
   color: white;
 }

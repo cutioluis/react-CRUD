@@ -2,13 +2,17 @@ import React from "react";
 import "./TodoItem.css";
 import { RiDeleteBin7Fill } from "react-icons/ri";
 
-const TodoItem = () => {
+const TodoItem = ({ title, isDone, onCompleteTodo, onDeleteTodo }) => {
   return (
     <section className="items">
       <div className="items_input">
-        <input className="items__checkbox" type="checkbox" />
-        <p>Esta es mi nueva tarea espero que completes</p>
-        <RiDeleteBin7Fill className="icon-delete" />
+        <input
+          onClick={onCompleteTodo}
+          className="items__checkbox"
+          type="checkbox"
+        />
+        <p className={isDone ? "items__through" : "items-text"}>{title}</p>
+        <RiDeleteBin7Fill onClick={onDeleteTodo} className="icon-delete" />
       </div>
     </section>
   );
